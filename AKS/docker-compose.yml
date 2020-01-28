@@ -3,7 +3,7 @@ version: '3.4'
 services:
 
   #PHP Service
-  app:
+  hellolaravel:
     image: ${DOCKER_REGISTRY}/aks-hellolaravel:${VERSION:-dev}
     build:
       context: .
