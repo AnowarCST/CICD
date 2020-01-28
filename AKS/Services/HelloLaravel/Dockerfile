@@ -7,8 +7,6 @@ COPY Services/HelloLaravel/composer.json /var/www/
 # Set working directory
 WORKDIR /var/www
 
-# install composer
-RUN composer install
 
 # Install dependencies
 RUN apt-get update && apt-get install -y \
@@ -46,6 +44,9 @@ COPY Services/HelloLaravel /var/www
 
 # Copy existing application directory permissions
 COPY --chown=www:www Services/HelloLaravel /var/www
+
+# install composer
+RUN composer install
 
 # Change current user to www
 USER www
