@@ -37,10 +37,10 @@ RUN groupadd -g 1000 www
 RUN useradd -u 1000 -ms /bin/bash -g www www
 
 # Copy existing application directory contents
-COPY . /var/www
+COPY Services/HelloLaravel/ /var/www
 
 # Copy existing application directory permissions
-COPY --chown=www:www . /var/www
+COPY --chown=www:www Services/HelloLaravel /var/www
 
 # Change current user to www
 USER www
