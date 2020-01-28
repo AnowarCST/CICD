@@ -4,11 +4,11 @@ FROM php:7.2-fpm
 # COPY Services/HelloLaravel/composer.lock Services/HelloLaravel/composer.json /var/www/
 COPY Services/HelloLaravel/composer.json /var/www/
 
-# install composer
-RUN composer install
-
 # Set working directory
 WORKDIR /var/www
+
+# install composer
+RUN composer install
 
 # Install dependencies
 RUN apt-get update && apt-get install -y \
