@@ -4,6 +4,9 @@ FROM php:7.2-fpm
 # COPY Services/HelloLaravel/composer.lock Services/HelloLaravel/composer.json /var/www/
 COPY Services/HelloLaravel/composer.json /var/www/
 
+# install composer
+RUN composer install
+
 # Set working directory
 WORKDIR /var/www
 
@@ -40,8 +43,6 @@ RUN useradd -u 1000 -ms /bin/bash -g www www
 # Copy existing application directory contents
 COPY Services/HelloLaravel /var/www
 
-# install composer
-# RUN composer install
 
 # Copy existing application directory permissions
 COPY --chown=www:www Services/HelloLaravel /var/www
