@@ -4,11 +4,11 @@ services:
 
   #PHP Service
   hellolaravel:
-    image: ${DOCKER_REGISTRY}/aks-hellolaravel:${VERSION:-dev}
+    # image: ${DOCKER_REGISTRY}/aks-hellolaravel:${VERSION:-dev}
     build:
       context: .
       dockerfile: Services/HelloLaravel/Dockerfile
-    # image: digitalocean.com/php
+    image: digitalocean.com/php
     container_name: app_k8s
     restart: unless-stopped
     tty: true
@@ -29,7 +29,7 @@ services:
     restart: unless-stopped
     tty: true
     ports:
-      - "80:80"
+      - "8008:80"
         #  - "4431:443"
     volumes:
       - ./:/var/www
@@ -38,23 +38,23 @@ services:
       - app-network
 
   #MySQL Service
-  db:
-    image: mysql:8.0.17
-    container_name: db_k8s
-    restart: unless-stopped
-    tty: true
-    ports:
-      - "3306:3306"
-    environment:
-      MYSQL_DATABASE: laravel
-      MYSQL_ROOT_PASSWORD: root@123456
-      SERVICE_TAGS: dev
-      SERVICE_NAME: mysql
-    volumes:
-      - dbdata:/var/lib/mysql
-      - ./mysql/my.cnf:/etc/mysql/my.cnf
-    networks:
-      - app-network
+  # db:
+  #   image: mysql:8.0.17
+  #   container_name: db_k8s
+  #   restart: unless-stopped
+  #   tty: true
+  #   ports:
+  #     - "3309:3306"
+  #   environment:
+  #     MYSQL_DATABASE: laravel
+  #     MYSQL_ROOT_PASSWORD: root@123456
+  #     SERVICE_TAGS: dev
+  #     SERVICE_NAME: mysql
+  #   volumes:
+  #     - dbdata:/var/lib/mysql
+  #     - ./mysql/my.cnf:/etc/mysql/my.cnf
+  #   networks:
+  #     - app-network
 
 #Docker Networks
 networks:
