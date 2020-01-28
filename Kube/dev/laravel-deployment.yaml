@@ -2,13 +2,13 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   namespace: app-dev
-  name: aks-hellonode-deployment
+  name: aks-hellolaravel-deployment
 spec:
   replicas: 1
   revisionHistoryLimit: 1
   selector:
     matchLabels:     
-      app.kubernetes.io/name: aks-hellonode
+      app.kubernetes.io/name: aks-hellolaravel
       app.kubernetes.io/instance: app-dev
       app.kubernetes.io/part-of: aks-services
       app.kubernetes.io/managed-by: azure-devops
@@ -21,15 +21,15 @@ spec:
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: aks-hellonode
+        app.kubernetes.io/name: aks-hellolaravel
         app.kubernetes.io/instance: app-dev
         app.kubernetes.io/version: "#{Release.Artifacts.aks.BuildNumber}#"    
         app.kubernetes.io/part-of: aks-services
         app.kubernetes.io/managed-by: azure-devops
     spec:
       containers:
-      - name: aks-hellonode
-        image: anowar.azurecr.io/aks-helloworldnode:#{Release.Artifacts.aks.BuildNumber}#
+      - name: aks-hellolaravel
+        image: anowar.azurecr.io/aks-hellolaravel:#{Release.Artifacts.aks.BuildNumber}#
         env:
         - name: ASPNETCORE_ENVIRONMENT
           value: "Development"
@@ -43,9 +43,9 @@ apiVersion: v1
 kind: Service
 metadata:
   namespace: app-dev
-  name: aks-hellonode-service
+  name: aks-hellolaravel-service
   labels:
-    app.kubernetes.io/name: aks-hellonode
+    app.kubernetes.io/name: aks-hellolaravel
     app.kubernetes.io/instance: app-dev
     app.kubernetes.io/version: "#{Release.Artifacts.aks.BuildNumber}#"    
     app.kubernetes.io/part-of: aks-services
@@ -56,7 +56,7 @@ spec:
   - protocol: TCP
     port: 80
   selector:
-    app.kubernetes.io/name: aks-hellonode
+    app.kubernetes.io/name: aks-hellolaravel
     app.kubernetes.io/instance: app-dev
     app.kubernetes.io/version: "#{Release.Artifacts.aks.BuildNumber}#"    
     app.kubernetes.io/part-of: aks-services
@@ -66,7 +66,7 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   namespace: app-dev
-  name: aks-hellonode-ingress
+  name: aks-hellolaravel-ingress
   annotations:
     kubernetes.io/ingress.class: nginx    
     nginx.org/server-snippets: "gzip on;"
@@ -83,5 +83,5 @@ spec:
       paths:           
       - path: /api/node
         backend:
-          serviceName: aks-hellonode-service
+          serviceName: aks-hellolaravel-service
           servicePort: 80
