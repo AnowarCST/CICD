@@ -7,7 +7,7 @@ services:
     # image: ${DOCKER_REGISTRY}/aks-hellolaravel:${VERSION:-dev}
     build:
       context: .
-      dockerfile: Services/HelloLaravel/Dockerfile
+      dockerfile: AKS/Services/HelloLaravel/Dockerfile
     image: digitalocean.com/php
     container_name: app_k8s
     restart: unless-stopped
