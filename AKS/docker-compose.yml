@@ -4,11 +4,11 @@ services:
 
   #PHP Service
   hellolaravel:
-    # image: ${DOCKER_REGISTRY}/aks-hellolaravel:${VERSION:-dev}
+    image: ${DOCKER_REGISTRY}/aks-hellolaravel:${VERSION:-dev}
     build:
       context: .
       dockerfile: AKS/Services/HelloLaravel/Dockerfile
-    image: digitalocean.com/php
+    # image: digitalocean.com/php
     container_name: app_k8s
     restart: unless-stopped
     tty: true
