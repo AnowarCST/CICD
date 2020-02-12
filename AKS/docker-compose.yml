@@ -7,7 +7,7 @@ services:
     image: ${DOCKER_REGISTRY}/aks-hellolaravel:${VERSION:-dev}
     build:
       context: .
-      dockerfile: AKS/Services/HelloLaravel/Dockerfile
+      dockerfile: Services/HelloLaravel/Dockerfile
     # image: digitalocean.com/php
     container_name: app_k8s
     restart: unless-stopped
@@ -17,8 +17,8 @@ services:
       SERVICE_TAGS: dev
     working_dir: /var/www
     volumes:
-      - ./AKS/Services/HelloLaravel:/var/www
-      - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini
+      # - ./AKS/Services/HelloLaravel:/var/www
+      - ./AKS/Services/HelloLaravel/php/local.ini:/usr/local/etc/php/conf.d/local.ini
     networks:
       - app-network
 
@@ -32,8 +32,8 @@ services:
       - "80:80"
         #  - "4431:443"
     volumes:
-      - ./AKS/Services/HelloLaravel:/var/www
-      - ./nginx/conf.d/:/etc/nginx/conf.d/
+      # - ./AKS/Services/HelloLaravel:/var/www
+      - ./AKS/Services/HelloLaravel/nginx/conf.d/:/etc/nginx/conf.d/
     networks:
       - app-network
 
