@@ -29,7 +29,7 @@ services:
     restart: unless-stopped
     tty: true
     ports:
-      - "8008:80"
+      - "80:80"
         #  - "4431:443"
     volumes:
       - ./AKS/Services/HelloLaravel:/var/www
