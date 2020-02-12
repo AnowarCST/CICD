@@ -2,7 +2,7 @@ FROM node:12-alpine
 WORKDIR /app
 
 # Install NPM packages
-COPY Services/HelloNode/package*.json /app/
+COPY AKS/Services/HelloNode/package*.json /app/
 RUN npm set progress=true
 #RUN npm cache clean --force
 RUN npm install
