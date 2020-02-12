@@ -81,7 +81,11 @@ spec:
   - host: anowar.eastus.cloudapp.azure.com
     http:
       paths:           
-      - path: /
+      - path: /laravel
         backend:
           serviceName: aks-hellolaravel-service
-          servicePort: 80
+          servicePort: 80     
+      # - path: /api/node
+      #   backend:
+      #     serviceName: aks-hellolaravel-service
+      #     servicePort: 80
