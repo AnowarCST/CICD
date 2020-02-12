@@ -8,7 +8,7 @@ RUN npm set progress=true
 RUN npm install
 
 # Copy Angular source code to app folder
-COPY Services/HelloNode /app/
+COPY AKS/Services/HelloNode /app/
 
 EXPOSE 80
 CMD [ "node", "server.js" ]
