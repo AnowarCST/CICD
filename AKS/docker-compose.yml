@@ -5,4 +5,4 @@ services:
     image: ${DOCKER_REGISTRY}/aks-helloworldnode:${VERSION:-dev}
     build:
       context: .
-      dockerfile: Services/HelloNode/Dockerfile
+      dockerfile: AKS/Services/HelloNode/Dockerfile
