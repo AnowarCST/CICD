@@ -3,7 +3,6 @@ var http = require('http');
 var port = process.env.PORT || 80;
 
 var fileSystem = require('fs');
-app.use(express.static(__dirname + '/public'));
 
 http.createServer(function (req, resp) {
     // res.writeHead(200, { 'Content-Type': 'application/json' });
