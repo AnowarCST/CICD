@@ -81,7 +81,7 @@ spec:
   - host: anowar.eastus.cloudapp.azure.com
     http:
       paths:           
-      - path: /api/node
+      - path: /
         backend:
           serviceName: aks-hellonode-service
           servicePort: 80
