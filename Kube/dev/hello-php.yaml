@@ -81,7 +81,7 @@ spec:
   - host: anowar.eastus.cloudapp.azure.com
     http:
       paths:
-      - path: /php
+      - path: /
         backend:
           serviceName: aks-hellophp-service
           servicePort: 80
