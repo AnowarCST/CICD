@@ -7,7 +7,7 @@ services:
       context: .
       dockerfile: Services/HelloNode/Dockerfile
   web:
-    image: ${DOCKER_REGISTRY}/aks-helloworldnginx:${VERSION:-dev}
+    image: ${DOCKER_REGISTRY}/aks-helloworldphp:${VERSION:-dev}
     build:
       context: .
       dockerfile: Services/hello-php/Dockerfile
