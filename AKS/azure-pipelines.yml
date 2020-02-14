@@ -20,6 +20,7 @@ steps:
 - script: |
     echo "$(dockerPassword)" | docker login  $(dockerId).azurecr.io -u $(dockerUsername) --password-stdin
     docker push $(dockerId).azurecr.io/aks-helloworldnode:$(VERSION)
+    docker push $(dockerId).azurecr.io/aks-helloworldnginx:$(VERSION)
   displayName: "docker publish"
   
 - task: CopyFiles@2
