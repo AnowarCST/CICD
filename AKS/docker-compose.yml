@@ -20,6 +20,8 @@ services:
         - ./Services/hello-php/default.conf:/etc/nginx/conf.d/default.conf
     # networks:
     #     - code-network
+    depends_on:
+      - fpm
     links:
       - fpm
   fpm:
