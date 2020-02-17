@@ -3,5 +3,5 @@ COPY Services/hello-php/code /var/www/
 
 WORKDIR /var/www/
 
-# EXPOSE 9000
-# CMD ["php-fpm"]
+EXPOSE 9000
+CMD ["php-fpm"]
