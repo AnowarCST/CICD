@@ -8,7 +8,7 @@ services:
       context: .
       dockerfile: Services/HelloNode/Dockerfile
   nginx:
-    image: ${DOCKER_REGISTRY}/aks-helloworldweb:${VERSION:-dev}
+    image: ${DOCKER_REGISTRY}/aks-helloworldphp:${VERSION:-dev}
     # image: anowar/aks-helloworldnginx
     build:
       context: .
@@ -23,7 +23,7 @@ services:
     links:
       - fpm
   fpm:
-    image: ${DOCKER_REGISTRY}/aks-helloworldphp:${VERSION:-dev}
+    image: ${DOCKER_REGISTRY}/aks-helloworldfpm:${VERSION:-dev}
     # image: anowar/aks-helloworldphp
     build:
       context: .
