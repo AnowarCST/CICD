@@ -20,6 +20,7 @@ steps:
 - script: |
     echo "$(dockerPassword)" | docker login  $(dockerId).azurecr.io -u $(dockerUsername) --password-stdin
     docker push $(dockerId).azurecr.io/aks-helloworldnode:$(VERSION)
+    docker push $(dockerId).azurecr.io/aks-helloworldweb:$(VERSION)
     docker push $(dockerId).azurecr.io/aks-helloworldphp:$(VERSION)
   displayName: "docker publish"
   

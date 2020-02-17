@@ -2,33 +2,39 @@ version: '3.4'
 
 services:
   helloworldnode:
-    image: ${DOCKER_REGISTRY}/aks-helloworldnode:${VERSION:-dev}
+    # image: ${DOCKER_REGISTRY}/aks-helloworldnode:${VERSION:-dev}
+    image: anowar/aks-helloworldnode
     build:
       context: .
       dockerfile: Services/HelloNode/Dockerfile
-  web:
-    image: ${DOCKER_REGISTRY}/aks-helloworldphp:${VERSION:-dev}
+  nginx:
+    image: ${DOCKER_REGISTRY}/aks-helloworldweb:${VERSION:-dev}
+    # image: anowar/aks-helloworldnginx
     build:
       context: .
       dockerfile: Services/hello-php/Dockerfile
     ports:
         - "8080:80"
-    # volumes:
-    #     - ./Services/hello-php/code:/code
-    #     - ./Services/hello-php/site.conf:/etc/nginx/conf.d/default.conf
+    volumes:
+        - ./Services/hello-php/code:/code
+        - ./Services/hello-php/default.conf:/etc/nginx/conf.d/default.conf
     # networks:
     #     - code-network
-  # php:
-  #   image: ${DOCKER_REGISTRY}/aks-helloworldphp:${VERSION:-dev}
-  #   build:
-  #     context: .
-  #     dockerfile: Services/hello-/Dockerfile
-  #   volumes:
-  #       - ./Services/hello-php/code:/code
-  #   networks:
-  #       - code-network
+    links:
+      - fpm
+  fpm:
+    image: ${DOCKER_REGISTRY}/aks-helloworldphp:${VERSION:-dev}
+    # image: anowar/aks-helloworldphp
+    build:
+      context: .
+      dockerfile: Services/hello-php/php/Dockerfile
+    ports:
+      - "9000:9000"
+    volumes:
+        - ./Services/hello-php/code:/code
+    # networks:
+    #     - code-network
 
 # networks:
 #   code-network:
 #       driver: bridge
-      
