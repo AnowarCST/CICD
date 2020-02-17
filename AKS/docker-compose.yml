@@ -2,8 +2,8 @@ version: '3.4'
 
 services:
   helloworldnode:
-    # image: ${DOCKER_REGISTRY}/aks-helloworldnode:${VERSION:-dev}
-    image: anowar/aks-helloworldnode
+    image: ${DOCKER_REGISTRY}/aks-helloworldnode:${VERSION:-dev}
+    # image: anowar/aks-helloworldnode
     build:
       context: .
       dockerfile: Services/HelloNode/Dockerfile
